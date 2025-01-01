@@ -127,6 +127,16 @@
     opacity: 0;
 }
 
+.btnEye{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: 1.2em;
+    color: var(--white);
+}
 
 .btnCad{
     width: 100%;

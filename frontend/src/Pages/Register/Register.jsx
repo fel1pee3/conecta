@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import style from "./Register.module.css"
 import img from "../../../images/logo-conecta-semfundo.png"
+import { RxEyeOpen } from "react-icons/rx";
+import { LuEyeClosed } from "react-icons/lu";
 
 const Register = () => {
 
@@ -11,6 +13,12 @@ const Register = () => {
         email: '',
         password: ''
     })
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword((prevState) => !prevState);
+    };
     
     const navigate = useNavigate()
     
@@ -41,7 +49,10 @@ const Register = () => {
                         <input className={style.registerInput} type="email" placeholder='Email' name='email' autoComplete="username" onChange={handleChanges}/>
                     </div>
                     <div className={style.caixaInput}>
-                        <input className={style.registerInput} type="password" placeholder='Senha' name='password' autoComplete="new-password" onChange={handleChanges}/>
+                        <input className={style.registerInput} type={showPassword ? "text" : "password"} placeholder='Senha' name='password' autoComplete="new-password" onChange={handleChanges}/>
+                        <button className={style.btnEye} type="button" onClick={togglePasswordVisibility}>
+                            {showPassword ? <LuEyeClosed /> : <RxEyeOpen />}
+                        </button>
                     </div>
                     <div className={style.caixaInput}>
                         <input className={style.registerInput} type="text" placeholder='Nome de usuário' name='username' onChange={handleChanges}/>

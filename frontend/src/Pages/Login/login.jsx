@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import style from "./Login.module.css"
 import img from "../../../images/logo-conecta-semfundo.png"
+import { RxEyeOpen } from "react-icons/rx";
+import { LuEyeClosed } from "react-icons/lu";
 
 const Login = () => {
 
@@ -10,6 +12,12 @@ const Login = () => {
         email: '',
         password: ''
     })
+
+    const [showPassword, setShowPassword] = useState(false);
+    
+    const togglePasswordVisibility = () => {
+        setShowPassword((prevState) => !prevState);
+    };
 
     const navigate = useNavigate()
 
@@ -41,7 +49,10 @@ const Login = () => {
                         <input className={style.loginInput} type="email" placeholder='Email'  name='email' autoComplete="username" onChange={handleChanges}/>
                     </div>
                     <div className={style.caixaInput}>
-                        <input className={style.loginInput} type="password" placeholder='Senha'  name='password' autoComplete="current-password" onChange={handleChanges}/>
+                        <input className={style.loginInput} type={showPassword ? "text" : "password"} placeholder='Senha' name='password' autoComplete="new-password" onChange={handleChanges}/>
+                        <button className={style.btnEye} type="button" onClick={togglePasswordVisibility}>
+                            {showPassword ? <LuEyeClosed /> : <RxEyeOpen />}
+                        </button>
                     </div>
                     <button className={style.btnCad}>Login</button>
                     </form>
