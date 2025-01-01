@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import "./Register.css"
+import style from "./Register.module.css"
+import img from "../../../images/logo-conecta-semfundo.png"
 
 const Register = () => {
 
@@ -30,25 +31,27 @@ const Register = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="username">Seu nome</label>
-                    <input type="text" placeholder='Nome Sobrenome'  name='username' onChange={handleChanges}/>
+        <div className={style.register}>
+            <div className={style.registerContainer}>
+                <form onSubmit={handleSubmit} className={style.registerForm}>
+                    <div className={style.caixaLogo}>
+                        <img className={style.imgLogo} src={img} alt="Logo" />
+                    </div>
+                    <div className={style.caixaInput}>
+                        <input className={style.registerInput} type="email" placeholder='Email' name='email' autoComplete="username" onChange={handleChanges}/>
+                    </div>
+                    <div className={style.caixaInput}>
+                        <input className={style.registerInput} type="password" placeholder='Senha' name='password' autoComplete="new-password" onChange={handleChanges}/>
+                    </div>
+                    <div className={style.caixaInput}>
+                        <input className={style.registerInput} type="text" placeholder='Nome de usuário' name='username' onChange={handleChanges}/>
+                    </div>
+                    <button className={style.btnCad}>Cadastrar</button>
+                </form>
+                <div className={style.registerLogin}>
+                    <p>Já tem conta?</p>
+                    <Link to='/Login'>Login</Link>
                 </div>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input type="email" placeholder='email@gmail.com'  name='email' autoComplete="username" onChange={handleChanges}/>
-                </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" placeholder='senha@12345'  name='password' autoComplete="new-password" onChange={handleChanges}/>
-                </div>
-                <button>Cadastrar</button>
-            </form>
-            <div>
-                <p>Already Have Account?</p>
-                <Link to='/Login'>Login</Link>
             </div>
         </div>
     )

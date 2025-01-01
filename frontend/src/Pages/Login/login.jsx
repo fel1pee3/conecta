@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import "./login.css"
+import style from "./Login.module.css"
+import img from "../../../images/logo-conecta-semfundo.png"
 
-const login = () => {
+const Login = () => {
 
     const [values, setVAlues] = useState({
         email: '',
@@ -30,24 +31,27 @@ const login = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input type="email" placeholder='Enter Email'  name='email' autoComplete="username" onChange={handleChanges}/>
+        <div className={style.login}>
+            <div className={style.loginContainer}>
+                <form onSubmit={handleSubmit} className={style.loginForm}>
+                    <div className={style.caixaLogo}>
+                        <img className={style.imgLogo} src={img} alt="Logo" />
+                    </div>
+                    <div className={style.caixaInput}>
+                        <input className={style.loginInput} type="email" placeholder='Email'  name='email' autoComplete="username" onChange={handleChanges}/>
+                    </div>
+                    <div className={style.caixaInput}>
+                        <input className={style.loginInput} type="password" placeholder='Senha'  name='password' autoComplete="current-password" onChange={handleChanges}/>
+                    </div>
+                    <button className={style.btnCad}>Login</button>
+                    </form>
+                <div className={style.loginRegister}>
+                    <p>Não tem conta?</p>
+                    <Link to='/Register'>Register</Link>
                 </div>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" placeholder='Enter Password'  name='password' autoComplete="current-password" onChange={handleChanges}/>
-                </div>
-                <button>Login</button>
-                </form>
-            <div>
-                <p>Don't Have Account?</p>
-                <Link to='/Register'>Register</Link>
             </div>
         </div>
     )
 }
 
-export default login
+export default Login

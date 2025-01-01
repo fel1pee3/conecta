@@ -1,0 +1,155 @@
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--black);
+}
+
+.loginContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    width: max-content;
+    height: max-content;
+    color: var(--white);
+}
+
+.loginForm{
+    border: 1px solid #363636;
+    width: 100%;
+    padding: 15px 30px;
+}
+
+.caixaLogo{
+    display: flex;
+    justify-content: center;
+}
+
+.imgLogo{
+    width: 80px;
+}
+
+
+/* From Uiverse.io by WhiteNervosa */ 
+.caixaInput {
+    position: relative;
+    width: 280px;
+    margin: 12px 5px;
+    --accent-color: var(--color1);
+}
+
+.caixaInput:before {
+    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+}
+
+.caixaInput:before,
+.caixaInput:after {
+    content: "";
+    left: 0;
+    right: 0;
+    position: absolute;
+    pointer-events: none;
+    bottom: -1px;
+    z-index: 4;
+    width: 100%;
+}
+
+.caixaInput:focus-within:before {
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.caixaInput:before {
+    transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+}
+
+.caixaInput:focus-within:before {
+    border-bottom: 1px solid var(--accent-color);
+    transform: scaleX(1);
+}
+
+.caixaInput:focus-within:after {
+    border-bottom: 2px solid var(--accent-color);
+    transform: scaleX(1);
+}
+
+.caixaInput:after {
+    content: "";
+    transform: scaleX(0);
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    will-change: transform;
+    border-bottom: 2px solid var(--accent-color);
+    border-bottom-color: var(--accent-color);
+}
+
+.registerInput::placeholder {
+    transition: opacity 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    opacity: 1;
+    user-select: none;
+    color: rgba(255, 255, 255, 0.582);
+}
+
+.caixaInput .loginInput {
+    border-radius: 5px 5px 0px 0px;
+    box-shadow: 0px 2px 5px rgb(35 35 35 / 30%);
+    max-height: 36px;
+    background-color: #252525;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 200ms;
+    transition-property: background-color;
+    color: #e8e8e8;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px;
+    width: 100%;
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+}
+
+.caixaInput .loginInput:focus,
+.caixaInput .loginInput:active {
+    outline: none;
+}
+
+.caixaInput:focus-within .loginInput,
+.caixaInput .loginInput:focus,
+.caixaInput .loginInput:active {
+    background-color: #353535;
+}
+
+.caixaInput:focus-within .loginInput::placeholder {
+    opacity: 0;
+}
+
+
+.btnCad{
+    width: 100%;
+    border: none;
+    border-radius: 7px;
+    padding: 10px;
+    background-color: var(--color1);
+    color: var(--white);
+    font-weight: 600;
+}
+
+.loginRegister{
+    border: 1px solid #363636;
+    width: 100%;
+    padding: 15px 30px;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    font-size: .9em;
+}
+
+.loginRegister a{
+    color: var(--color1);
+    font-weight: 600;
+    text-decoration: none;
+}
