@@ -64,7 +64,7 @@ const Header = () => {
             {isExpanded ? <IoClose /> : <FiMenu />}
         </button>
         <ul className={style.menu}>
-            <Link to='/Conversas'>
+            <Link to='/'>
                 <BiMessageRoundedDetail /> {isExpanded && <span>Conversas</span>}
             </Link>
             <Link to='/Register'>

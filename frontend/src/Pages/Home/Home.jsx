@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import style from './Conversas.module.css'
-import Header from '../Header/Header'
-import { FaMagnifyingGlass } from "react-icons/fa6";
-import Contatos from '../Contatos/Contatos';
+import style from './Home.module.css'
+import Header from '../../Components/Header/Header';
+import Contatos from '../../Components/Contatos/Contatos';
 
-const Conversas = () => {
+const Home = () => {
 
     const [userName, setUserName] = useState('');
     const navigate = useNavigate();
@@ -45,4 +44,4 @@ const Conversas = () => {
   )
 }
 
-export default Conversas
+export default Home

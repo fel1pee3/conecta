@@ -1,5 +1,14 @@
 .contatos{
     color: var(--white);
+    height: 100vh;
+}
+
+.caixaTitulo{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
 }
 
 .conversasContainer h1{
@@ -109,4 +118,36 @@
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.caixaContatos{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contato{
+    position: relative;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.imgPerfil{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.caixaTexto p{
+    font-size: .9em;
+    color: #ffffffe8;
+}
+
+.caixaHora{
+    right: 10px;
+    top: 10px;
+    position: absolute;
 }
