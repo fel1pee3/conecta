@@ -1,0 +1,84 @@
+.sidebar {
+    background-color: #333;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    overflow: hidden;
+    position: fixed;
+    box-shadow: 1px 1px 10px 1px #00000094;
+    z-index: 10;
+}
+
+.sidebar.collapsed {
+    width: 50px;
+}
+
+.sidebar.expanded {
+    width: 200px;
+}
+
+.caixaLogo{
+    padding: 15px;
+    display: flex; 
+    align-items: center;
+    gap: 1.5px;
+}
+
+.logo{
+    height: 14px;
+}
+
+.restoLogo{
+    font-family: var(--font-logo);
+}
+
+.toggleBtn {
+    color: var(--white);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 15px;
+}
+
+.toggleBtn:hover {
+    background: #555;
+}
+
+.toggleBtn:active {
+    background: #555555a2;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu a {
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.menu a:hover {
+    background: #555;   
+}
+
+.menu a:active {
+    background: #555555a2;  
+}
+
+.menu a span {
+    margin-left: 15px;
+    white-space: nowrap;
+}

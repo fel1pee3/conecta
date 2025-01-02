@@ -1,0 +1,11 @@
+.conversas{
+    display: flex;
+}
+
+.conversasContainer{
+    margin-left: 50px;
+    background-color: #3f3f3f;
+    padding: 20px;
+    width: max-content;
+}
+
