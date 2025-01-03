@@ -1,14 +1,14 @@
 import React from 'react';
 import style from './contatos.module.css'
-import { FaMagnifyingGlass } from "react-icons/fa6";
-import BtnAddContato from '../BtnAddContato/BtnAddContato';
+import { FaMagnifyingGlass } from "react-icons/fa6"
+import AddContact from '../AddContact/addContact'
 
 const Contatos = () => {
   return (
     <div className={style.contatos}>
         <div className={style.caixaTitulo}>
             <h1>Conversas</h1>
-            <BtnAddContato />
+            <AddContact />
         </div>
         <div className={style.caixaInput}>
             <FaMagnifyingGlass className={style.lupa}/>

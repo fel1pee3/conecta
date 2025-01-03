@@ -1,5 +1,6 @@
 .conversas{
     display: flex;
+    position: relative;
 }
 
 .conversasContainer{

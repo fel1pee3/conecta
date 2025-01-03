@@ -1,38 +1,70 @@
-.contatos{
-    color: var(--white);
-    height: 100vh;
+.addButton {
+    background-color: var(--color1);
+    box-shadow: 3px 3px 5px 1px #00000059;
+    color: white;
+    font-size: 24px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: block;
 }
 
-.caixaTitulo{
+.addButton:hover {
+    transform: scale(1.1);
+}
+
+.formBackground{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 10px;
+    z-index: 120;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
 }
 
-.conversasContainer h1{
-    color: var(--white);
-    font-size: 1.6em;
-    margin-bottom: 10px;
+.formContainer {
+    position: absolute;
+    width: 400px;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    background-color: #555;
+}
+
+.formContainer h2{
+    padding: 30px 20px 15px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
 }
 
 /* From Uiverse.io by WhiteNervosa */ 
-.caixaInput {
+.inputGroup {
     position: relative;
-    width: 330px;
-    margin: 12px 5px;
+    width: 90%;
+    margin: 5px 20px;
     --accent-color: var(--color1);
-    z-index: 1;
 }
 
-.caixaInput:before {
+.inputGroup:before {
     transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     border-bottom: 1px solid rgba(0, 0, 0, 0.42);
 }
 
-.caixaInput:before,
-.caixaInput:after {
+.inputGroup:before,
+.inputGroup:after {
     content: "";
     left: 0;
     right: 0;
@@ -43,26 +75,26 @@
     width: 100%;
 }
 
-.caixaInput:focus-within:before {
+.inputGroup:focus-within:before {
     border-bottom: 1px solid var(--accent-color);
 }
 
-.caixaInput:before {
+.inputGroup:before {
     transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     border-bottom: 1px solid rgba(0, 0, 0, 0.42);
 }
 
-.caixaInput:focus-within:before {
+.inputGroup:focus-within:before {
     border-bottom: 1px solid var(--accent-color);
     transform: scaleX(1);
 }
 
-.caixaInput:focus-within:after {
+.inputGroup:focus-within:after {
     border-bottom: 2px solid var(--accent-color);
     transform: scaleX(1);
 }
 
-.caixaInput:after {
+.inputGroup:after {
     content: "";
     transform: scaleX(0);
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1) 0ms;
@@ -78,7 +110,7 @@
     color: rgba(255, 255, 255, 0.582);
 }
 
-.caixaInput .inputPesquisar {
+.inputGroup .addContactInput {
     border-radius: 5px 5px 0px 0px;
     box-shadow: 0px 2px 5px rgb(35 35 35 / 30%);
     max-height: 36px;
@@ -96,58 +128,41 @@
     border-right: none;
 }
 
-.caixaInput .inputPesquisar:focus,
-.caixaInput .inputPesquisar:active {
+.inputGroup .addContactInput:focus,
+.inputGroup .addContactInput:active {
     outline: none;
 }
 
-.caixaInput:focus-within .inputPesquisar,
-.caixaInput .inputPesquisar:focus,
-.caixaInput .inputPesquisar:active {
+.inputGroup:focus-within .addContactInput,
+.inputGroup .addContactInput:focus,
+.inputGroup .addContactInput:active {
     background-color: #353535;
 }
 
-.caixaInput:focus-within .inputPesquisar::placeholder {
+.inputGroup:focus-within .addContactInput::placeholder {
     opacity: 0;
 }
 
-.lupa{
+.buttonGroup{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #272727;
+    margin-top: 20px;
+    padding: 30px 20px;
+    gap: 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.button {
+    width: 50%;
+    background-color: var(--color1);
     color: var(--white);
-    font-size: 20px;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.caixaContatos{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.contato{
-    position: relative;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    padding: 10px;
+    border: none;
+    padding: 10px 0;
     border-radius: 10px;
 }
 
-.imgPerfil{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.caixaTexto p{
-    font-size: .9em;
-    color: #ffffffe8;
-}
-
-.caixaHora{
-    right: 10px;
-    top: 10px;
-    position: absolute;
+.button:hover {
+    transform: scale(1.03);
 }
