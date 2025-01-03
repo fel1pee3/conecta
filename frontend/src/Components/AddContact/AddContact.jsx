@@ -10,7 +10,7 @@ const AddContact = () => {
 
     const handleAddContact = async () => {
         try {
-            const response = await axios.post('http://localhost:3000/contact/contacts', {
+            const response = await axios.post('http://localhost:3000/contact/addContacts', {
                 userId: 1, // Substitua pelo ID do usuário logado
                 contactEmail: email,
                 nickname: nickname,

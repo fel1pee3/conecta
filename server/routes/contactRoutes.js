@@ -1,9 +1,10 @@
 import express from 'express';
 import { connectToDatabase } from '../lib/db.js';
+import verifyToken from '../middlewares/verifyToken.js'
 
 const router = express.Router();
 
-router.post('/contacts', async (req, res) => {
+router.post('/addContacts', async (req, res) => {
     const { userId, contactEmail, nickname } = req.body;
 
     try {
@@ -41,5 +42,32 @@ router.post('/contacts', async (req, res) => {
     }
 });
 
+router.get('/contactsSalved', verifyToken, async (req, res) => {
+    const userId = req.userId; // ID do usuário logado, obtido do token
+
+    try {
+        const db = await connectToDatabase();
+
+        // Buscar todos os contatos do usuário logado
+        const [contacts] = await db.query(`
+            SELECT c.id, 
+                   IFNULL(c.nickname, u.email) AS contact_display_name
+            FROM contacts c
+            LEFT JOIN users u ON u.id = c.contact_user_id
+            WHERE c.user_id = ?
+        `, [userId]);
+
+        // Verifica se há contatos
+        if (contacts.length === 0) {
+            return res.status(404).json({ message: "Nenhum contato encontrado." });
+        }
+
+        // Retorna os contatos com apelido ou email
+        res.status(200).json({ contacts });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Erro ao listar contatos." });
+    }
+});
 
 export default router;
