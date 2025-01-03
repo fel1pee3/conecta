@@ -30,24 +30,24 @@ const Header = () => {
         customUI: ({ onClose }) => (
         <div className="react-confirm-alert-wrapper">
             <div className="react-confirm-alert-container">
-            {/* Título e mensagem dentro de uma div */}
-            <div className="react-confirm-alert-message">
-                <h1>Desconectar</h1>
-                <p>Você tem certeza que deseja sair?</p>
-            </div>
+                {/* Título e mensagem dentro de uma div */}
+                <div className="react-confirm-alert-message">
+                    <h1>Desconectar</h1>
+                    <p>Você tem certeza que deseja sair?</p>
+                </div>
 
-            {/* Botões dentro de outra div */}
-            <div className="react-confirm-alert-buttons">
-                <button
-                onClick={() => {
-                    handleConfirmLogout(); // Executa o logout
-                    onClose(); // Fecha o diálogo
-                }}
-                >
-                Sim
-                </button>
-                <button onClick={onClose}>Não</button>
-            </div>
+                {/* Botões dentro de outra div */}
+                <div className="react-confirm-alert-buttons">
+                    <button
+                    onClick={() => {
+                        handleConfirmLogout(); // Executa o logout
+                        onClose(); // Fecha o diálogo
+                    }}
+                    >
+                    Sim
+                    </button>
+                    <button onClick={onClose}>Não</button>
+                </div>
             </div>
         </div>
         ),
