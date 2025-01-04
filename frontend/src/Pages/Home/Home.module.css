@@ -1,12 +1,12 @@
-.conversas{
+.home{
     display: flex;
-    position: relative;
+    width: 100vw;
+    height: 100vh;
 }
 
 .conversasContainer{
     margin-left: 50px;
     background-color: #3f3f3f;
-    padding: 20px;
     width: max-content;
-}
-
+    display: flex;  
+}   

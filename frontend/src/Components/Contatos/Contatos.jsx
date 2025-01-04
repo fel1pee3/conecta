@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import style from './contatos.module.css'
 import { FaMagnifyingGlass } from "react-icons/fa6"
 import AddContact from '../AddContact/addContact'
@@ -46,7 +47,7 @@ const Contatos = () => {
 
             {contacts.length > 0 ? (
                     contacts.map((contact) => (
-                        <li key={contact.id} className={style.contato}>
+                        <Link to="/contato" key={contact.id} className={style.contato}>
                             <div className={style.caixaImg}>
                                 <img src="https://avatars.githubusercontent.com/u/81927632?v=4" alt="imagem de perfil" className={style.imgPerfil}/>
                             </div>
@@ -57,7 +58,7 @@ const Contatos = () => {
                             <div className={style.caixaHora}>
                                 <p>00:00</p>
                             </div>
-                        </li>
+                        </Link>
                     ))
                 ) : (
                     <p></p>

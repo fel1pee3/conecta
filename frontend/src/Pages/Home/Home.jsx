@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import style from './Home.module.css'
 import Header from '../../Components/Header/Header';
 import Contatos from '../../Components/Contatos/Contatos';
+import Contato from '../../Components/Contato/Contato';
 
 const Home = () => {
 
@@ -35,10 +36,12 @@ const Home = () => {
     }, []);
 
   return (
-    <div className={style.conversas}>   
+    <div className={style.home}>   
         <Header />
         <div className={style.conversasContainer}>
             <Contatos />
+            <Contato />
+            
         </div>
     </div>
   )

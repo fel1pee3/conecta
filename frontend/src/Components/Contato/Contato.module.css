@@ -1,0 +1,9 @@
+.contato{
+    background-image: url('../../../images/background-patepapo.jpg');
+    background-size: contain;
+    width: calc( 100vw - 50px - 400px + 20px );
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

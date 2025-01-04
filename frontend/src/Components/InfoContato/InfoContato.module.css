@@ -1,0 +1,17 @@
+.infoContato{
+    display: flex;
+    padding: 10px 20px;
+    background-color: #3f3f3f;
+    align-items: center;
+    gap: 10px;
+}
+
+.imgPerfil{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.caixaTexto h4{
+    color: var(--white);
+}

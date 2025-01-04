@@ -1,27 +1,12 @@
-.contatos{
-    color: var(--white);
-    height: 100vh;
-    padding: 0px 20px;
-}
-
-.caixaTitulo{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 10px;
-}
-
-.conversasContainer h1{
-    color: var(--white);
-    font-size: 1.6em;
-    margin-bottom: 10px;
+.envMsg{
+    background-color: #3f3f3f;
+    padding: 0 20px;
 }
 
 /* From Uiverse.io by WhiteNervosa */ 
 .caixaInput {
     position: relative;
-    width: 330px;
+    width: 100%g;
     margin: 12px 5px;
     --accent-color: var(--color1);
     z-index: 1;
@@ -79,7 +64,7 @@
     color: rgba(255, 255, 255, 0.582);
 }
 
-.caixaInput .inputPesquisar {
+.caixaInput .inputEnvMsg {
     border-radius: 5px 5px 0px 0px;
     box-shadow: 0px 2px 5px rgb(35 35 35 / 30%);
     max-height: 36px;
@@ -97,64 +82,17 @@
     border-right: none;
 }
 
-.caixaInput .inputPesquisar:focus,
-.caixaInput .inputPesquisar:active {
+.caixaInput .inputEnvMsg:focus,
+.caixaInput .inputEnvMsg:active {
     outline: none;
 }
 
-.caixaInput:focus-within .inputPesquisar,
-.caixaInput .inputPesquisar:focus,
-.caixaInput .inputPesquisar:active {
+.caixaInput:focus-within .inputEnvMsg,
+.caixaInput .inputEnvMsg:focus,
+.caixaInput .inputEnvMsg:active {
     background-color: #353535;
 }
 
-.caixaInput:focus-within .inputPesquisar::placeholder {
+.caixaInput:focus-within .inputEnvMsg::placeholder {
     opacity: 0;
-}
-
-.lupa{
-    color: var(--white);
-    font-size: 20px;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.caixaContatos{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.contato{
-    position: relative;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    padding: 10px;
-    border-radius: 10px;
-    color: var(--white);
-    text-decoration: none;
-}
-
-.contato:hover{
-    background-color: #353535;
-}
-
-.imgPerfil{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.caixaTexto p{
-    font-size: .9em;
-    color: #ffffffe8;
-}
-
-.caixaHora{
-    right: 10px;
-    top: 10px;
-    position: absolute;
 }
