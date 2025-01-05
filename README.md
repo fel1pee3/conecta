@@ -37,6 +37,69 @@ Certifique-se de ter instalado:
 - **MySQL**
 - **Git**
 
+### Criação do Banco de Dados
+
+#### BD `conecta`
+Cria o BD do projeto.
+```bash
+CREATE DATABASE conecta;
+```
+
+#### Tabela `users`
+Guarda informações sobre os usuários.
+```bash
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+#### Tabela `contacts`
+Relaciona usuários e seus contatos.
+```bash
+CREATE TABLE contacts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    contact_user_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (contact_user_id) REFERENCES users(id),
+    UNIQUE(user_id, contact_user_id)            
+);
+```
+
+#### Tabela `messages`
+Armazena as mensagens enviadas entre os contatos.
+```bash
+CREATE TABLE messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    sender_id INT NOT NULL,
+    receiver_id INT NOT NULL,
+    content TEXT NOT NULL,
+    is_read TINYINT(1) DEFAULT 0,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (sender_id) REFERENCES users(id),
+    FOREIGN KEY (receiver_id) REFERENCES users(id)
+);
+```
+
+#### Tabela `conversations`
+A tabela conversations será útil para identificar diferentes conversas entre usuários.
+```bash
+CREATE TABLE conversations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_one_id INT NOT NULL,
+    user_two_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_one_id) REFERENCES users(id),
+    FOREIGN KEY (user_two_id) REFERENCES users(id),
+    UNIQUE(user_one_id, user_two_id)
+);
+```
+
 ### Instalação
 
 1. Clone o repositório:
@@ -82,4 +145,4 @@ Certifique-se de ter instalado:
 ---
 
 ## Licença
-Este projeto está licenciado sob a licença **MIT**. Consulte o arquivo [LICENSE](./LICENSE) para mais informações.
+Este projeto está licenciado sob a licença **MIT**.
