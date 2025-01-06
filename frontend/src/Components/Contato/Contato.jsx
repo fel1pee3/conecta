@@ -10,6 +10,7 @@ const Contato = () => {
 
   return (
     <div className={style.contato}>
+      
         <InfoContato />
         <div className={style.mostrarMsgs}>
           

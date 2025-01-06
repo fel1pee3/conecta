@@ -7,6 +7,6 @@
 .conversasContainer{
     margin-left: 50px;
     background-color: #3f3f3f;
-    width: max-content;
+    width: 100%;
     display: flex;  
 }   

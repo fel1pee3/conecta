@@ -44,18 +44,20 @@ router.post('/addContacts', async (req, res) => {
 
 router.get('/contactsSalved', verifyToken, async (req, res) => {
     const userId = req.userId; // ID do usuário logado, obtido do token
+    const search = req.query.search || ''; // Pega o termo de busca (se existir)
 
     try {
         const db = await connectToDatabase();
 
-        // Buscar todos os contatos do usuário logado
+        // Buscar todos os contatos do usuário logado, com suporte a busca
         const [contacts] = await db.query(`
             SELECT c.id, 
                    IFNULL(c.nickname, u.email) AS contact_display_name
             FROM contacts c
             LEFT JOIN users u ON u.id = c.contact_user_id
             WHERE c.user_id = ?
-        `, [userId]);
+              AND (IFNULL(c.nickname, u.email) LIKE ?)
+        `, [userId, `%${search}%`]);
 
         // Verifica se há contatos
         if (contacts.length === 0) {
@@ -69,5 +71,33 @@ router.get('/contactsSalved', verifyToken, async (req, res) => {
         res.status(500).json({ error: "Erro ao listar contatos." });
     }
 });
+
+router.get('/contactInfos/:id', verifyToken, async (req, res) => {
+    const userId = req.userId; // ID do usuário logado
+    const contactId = req.params.id; // ID do contato recebido na rota
+
+    try {
+        const db = await connectToDatabase();
+
+        // Buscar o contato específico do usuário logado
+        const [results] = await db.query(`
+            SELECT c.id, 
+                   IFNULL(c.nickname, u.email) AS contact_display_name
+            FROM contacts c
+            LEFT JOIN users u ON u.id = c.contact_user_id
+            WHERE c.id = ? AND c.user_id = ?
+        `, [contactId, userId]);
+
+        if (results.length === 0) {
+            return res.status(404).json({ message: "Contato não encontrado." });
+        }
+
+        res.status(200).json({ contact: results[0] });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Erro ao buscar o contato." });
+    }
+});
+
 
 export default router;

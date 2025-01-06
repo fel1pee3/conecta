@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import style from './Home.module.css'
 import Header from '../../Components/Header/Header';
 import Contatos from '../../Components/Contatos/Contatos';
-import Contato from '../../Components/Contato/Contato';
+import SemMsg from '../../Components/SemMsg/SemMsg';
 
 const Home = () => {
 
@@ -40,8 +40,7 @@ const Home = () => {
         <Header />
         <div className={style.conversasContainer}>
             <Contatos />
-            <Contato />
-            
+            <SemMsg />  
         </div>
     </div>
   )

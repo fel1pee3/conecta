@@ -51,7 +51,7 @@ const Register = () => {
                     <div className={style.caixaInput}>
                         <input className={style.registerInput} type={showPassword ? "text" : "password"} placeholder='Senha' name='password' autoComplete="new-password" onChange={handleChanges}/>
                         <button className={style.btnEye} type="button" onClick={togglePasswordVisibility}>
-                            {showPassword ? <LuEyeClosed /> : <RxEyeOpen />}
+                            {showPassword ? <RxEyeOpen /> : <LuEyeClosed /> }
                         </button>
                     </div>
                     <div className={style.caixaInput}>

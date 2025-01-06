@@ -6,7 +6,7 @@
 /* From Uiverse.io by WhiteNervosa */ 
 .caixaInput {
     position: relative;
-    width: 100%g;
+    width: 100%;
     margin: 12px 5px;
     --accent-color: var(--color1);
     z-index: 1;
