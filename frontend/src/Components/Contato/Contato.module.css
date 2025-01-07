@@ -1,4 +1,14 @@
 .contato{
+    display: flex;
+}
+
+.contatoCaixa{
+    display: flex;
+    margin-left: 50px;
+    width: 100%;
+}
+
+.contatoContainer{
     background-image: url('../../../images/background-patepapo.jpg');
     background-size: contain;
     width: 100%;
@@ -6,4 +16,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.mostrarMsgs{
+    display: flex;
+    height: 100%;
+    color: aliceblue;
+    padding: 30px;
 }

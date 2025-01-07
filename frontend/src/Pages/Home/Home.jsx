@@ -36,7 +36,7 @@ const Home = () => {
     }, []);
 
   return (
-    <div className={style.home}>   
+    <div className={style.home}>    
         <Header />
         <div className={style.conversasContainer}>
             <Contatos />

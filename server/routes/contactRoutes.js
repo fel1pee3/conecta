@@ -72,32 +72,36 @@ router.get('/contactsSalved', verifyToken, async (req, res) => {
     }
 });
 
-router.get('/contactInfos/:id', verifyToken, async (req, res) => {
-    const userId = req.userId; // ID do usuário logado
-    const contactId = req.params.id; // ID do contato recebido na rota
+router.get('/contact/:id', verifyToken, async (req, res) => {
+    const userId = req.userId; // ID do usuário logado, obtido do token
+    const contactId = req.params.id; // ID do contato passado na URL
 
     try {
         const db = await connectToDatabase();
 
-        // Buscar o contato específico do usuário logado
-        const [results] = await db.query(`
+        // Buscar o contato pelo ID, pertencente ao usuário logado
+        const [result] = await db.query(`
             SELECT c.id, 
                    IFNULL(c.nickname, u.email) AS contact_display_name
             FROM contacts c
             LEFT JOIN users u ON u.id = c.contact_user_id
-            WHERE c.id = ? AND c.user_id = ?
-        `, [contactId, userId]);
+            WHERE c.user_id = ? AND c.id = ?
+        `, [userId, contactId]);
 
-        if (results.length === 0) {
+        // Verifica se o contato foi encontrado
+        if (result.length === 0) {
             return res.status(404).json({ message: "Contato não encontrado." });
         }
 
-        res.status(200).json({ contact: results[0] });
+        // Retorna o nickname ou email relacionado ao ID do contato
+        res.status(200).json({
+            id: result[0].id,
+            contact_display_name: result[0].contact_display_name,
+        });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Erro ao buscar o contato." });
     }
 });
-
 
 export default router;
