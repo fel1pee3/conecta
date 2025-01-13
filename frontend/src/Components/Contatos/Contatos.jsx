@@ -47,6 +47,7 @@ const Contatos = () => {
                     className={style.inputPesquisar}
                     placeholder='Pesquisar ou começar uma nova conversa'
                     type="text"
+                    title='Pesquisar Contato'
                     value={search}
                     onChange={(e) => setSearch(e.target.value)} // Atualiza o estado ao digitar
                 />

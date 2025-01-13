@@ -50,7 +50,7 @@ const EnvMsg = ({ setMessages }) => {
           value={content}
           onChange={(e) => setContent(e.target.value)} // Atualiza o conteúdo da mensagem
         />
-        <button className={style.btnSend} onClick={sendMessage}>
+        <button title="Enviar Mensagem" className={style.btnSend} onClick={sendMessage}>
           <IoIosSend />
         </button>
       </div>

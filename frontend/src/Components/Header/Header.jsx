@@ -60,18 +60,18 @@ const Header = () => {
             <img src={Logo} alt="logo da aplicação" className={style.logo} />
             {isExpanded && <span className={style.restoLogo}>onecta</span>}
         </span>
-        <button className={style.toggleBtn} onClick={toggleSidebar}>
+        <button className={style.toggleBtn} onClick={toggleSidebar} title="Abrir Navegação">
             {isExpanded ? <IoClose /> : <FiMenu />}
         </button>
         <ul className={style.menu}>
-            <Link to='/'>
+            <Link to='/' title="Conversas">
                 <BiMessageRoundedDetail /> {isExpanded && <span>Conversas</span>}
             </Link>
             
-            <Link to='/Register'>
+            <Link to='/Register' title="Configuracões">
                 <FaCog /> {isExpanded && <span>Configurações</span>}
             </Link>
-            <Link onClick={handleLogout} className={style.logoutBtn}>
+            <Link onClick={handleLogout} className={style.logoutBtn} title="Desconectar">
                     <FaSignOutAlt /> {isExpanded && <span>Desconectar</span>}
             </Link>
         </ul>

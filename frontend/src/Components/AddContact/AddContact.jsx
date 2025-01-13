@@ -29,7 +29,7 @@ const AddContact = () => {
     <div className={styles.addContact}>
             {/* Botão + para abrir o formulário */}
             {!showForm && (
-                <button className={styles.addButton} onClick={() => setShowForm(true)}>
+                <button  title="Adicionar Contato" className={styles.addButton} onClick={() => setShowForm(true)}>
                     +
                 </button>
             )}
