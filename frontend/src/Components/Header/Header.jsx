@@ -67,9 +67,7 @@ const Header = () => {
             <Link to='/'>
                 <BiMessageRoundedDetail /> {isExpanded && <span>Conversas</span>}
             </Link>
-            <Link to='/Register'>
-                <FaUser /> {isExpanded && <span>Perfil</span>}
-            </Link>
+            
             <Link to='/Register'>
                 <FaCog /> {isExpanded && <span>Configurações</span>}
             </Link>

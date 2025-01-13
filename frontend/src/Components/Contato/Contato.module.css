@@ -23,4 +23,36 @@
     height: 100%;
     color: aliceblue;
     padding: 30px;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 79vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color1) #1d1d1d; 
+}
+
+.contatos::-webkit-scrollbar {
+    width: 8px;
+}
+
+.contatos::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 10px;
+}
+
+.contatos::-webkit-scrollbar-track {
+    background: #f5f5f5;  
+}
+
+.message{
+    background-color: #3f3f3f;
+    padding: 5px;
+    border-radius: 10px; 
+    width: max-content;   
+}
+
+.message small{
+    display: flex;
+    justify-content: right;
+    font-size: .6em;
 }

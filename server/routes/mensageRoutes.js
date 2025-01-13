@@ -4,48 +4,57 @@ import verifyToken from '../middlewares/verifyToken.js'
 
 const router = express.Router();
 
-router.post('/messages/:contactId', verifyToken, async (req, res) => {
-    const senderId = req.userId; // ID do usuário logado
-    const receiverId = req.params.contactId; // ID do contato que receberá a mensagem
-    const { content } = req.body; // Conteúdo da mensagem enviada
-  
-    if (!content || content.trim() === '') {
-      return res.status(400).json({ message: 'A mensagem não pode estar vazia.' });
-    }
-  
-    try {
+router.post('/sendMessage/:receiverId', verifyToken, async (req, res) => {
+  const senderId = req.userId; // Obtém o ID do usuário logado
+  const { content } = req.body; // Obtém o conteúdo da mensagem
+  const { receiverId } = req.params; // Recebe o ID do destinatário da URL
+
+  try {
       const db = await connectToDatabase();
-  
-      // Verifica se o destinatário (contato) existe e está na lista de contatos do usuário logado
-      const [contactExists] = await db.query(
-        `SELECT * FROM contacts WHERE user_id = ? AND contact_user_id = ?`,
-        [senderId, receiverId]
-      );
-  
-      if (contactExists.length === 0) {
-        return res
-          .status(404)
-          .json({ message: 'Contato não encontrado ou não autorizado.' });
+
+      // Verificar se o destinatário existe
+      const [receiver] = await db.query('SELECT id FROM users WHERE id = ?', [receiverId]);
+      if (receiver.length === 0) {
+          return res.status(404).json({ message: 'Destinatário não encontrado.' });
       }
-  
-      // Insere a mensagem na tabela "messages"
-      const [result] = await db.query(
-        `INSERT INTO messages (sender_id, receiver_id, content, sent_at) VALUES (?, ?, ?, NOW())`,
-        [senderId, receiverId, content]
+
+      // Inserir a mensagem na tabela `messages`
+      await db.query(
+          'INSERT INTO messages (sender_id, receiver_id, content) VALUES (?, ?, ?)',
+          [senderId, receiverId, content]
       );
-  
-      if (result.affectedRows === 1) {
-        return res.status(201).json({ message: 'Mensagem enviada com sucesso!' });
-      } else {
-        return res
-          .status(500)
-          .json({ message: 'Erro ao salvar a mensagem no banco de dados.' });
-      }
-    } catch (err) {
+
+      res.status(201).json({ message: 'Mensagem enviada com sucesso.' });
+  } catch (err) {
       console.error(err);
-      res.status(500).json({ message: 'Erro ao enviar a mensagem.' });
-    }
-  });
-  
+      res.status(500).json({ error: 'Erro ao enviar a mensagem.' });
+  }
+});
+
+router.get('/getMessages/:receiverId', verifyToken, async (req, res) => {
+  const senderId = req.userId; // Obtém o ID do usuário logado a partir do token
+  const { receiverId } = req.params; // Recebe o ID do destinatário da URL
+
+  try {
+      const db = await connectToDatabase();
+
+      // Verificar se o destinatário existe
+      const [receiver] = await db.query('SELECT id FROM users WHERE id = ?', [receiverId]);
+      if (receiver.length === 0) {
+          return res.status(404).json({ message: 'Destinatário não encontrado.' });
+      }
+
+      // Buscar todas as mensagens entre o usuário logado e o destinatário
+      const [messages] = await db.query(
+          'SELECT id, sender_id, receiver_id, content, is_read, sent_at FROM messages WHERE (sender_id = ? AND receiver_id = ?) OR (sender_id = ? AND receiver_id = ?) ORDER BY sent_at ASC',
+          [senderId, receiverId, receiverId, senderId]
+      );
+
+      res.status(200).json({ messages });
+  } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao buscar as mensagens.' });
+  }
+});
 
 export default router;
