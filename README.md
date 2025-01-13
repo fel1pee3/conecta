@@ -3,12 +3,17 @@
 Conecta é uma aplicação moderna de troca de mensagens desenvolvida para facilitar a comunicação entre usuários de maneira prática e segura. Ideal para comunidades, grupos de trabalho e conexões pessoais, a plataforma prioriza a simplicidade e a eficiência.
 
 ## Status
-🚧 Projeto em desenvolvimento 🚧
+🚧 Projeto Finalizado (possiveis mudanças no futuro) 🚧
 
 ## Pré-visualização
 Confira uma prévia do Conecta:
 
-![Conecta Screenshot](https://via.placeholder.com/800x400?text=Conecta+Preview)
+![Imagem da Aplicação](frontend/images/tela1.png)
+![Imagem da Aplicação](frontend/images/tela2.png)
+![Imagem da Aplicação](frontend/images/tela3.png)
+![Imagem da Aplicação](frontend/images/tela4.png)
+![Imagem da Aplicação](frontend/images/tela5.png)
+![Imagem da Aplicação](frontend/images/tela6.png)
 
 ---
 
