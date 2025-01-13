@@ -12,6 +12,7 @@ import './confirmAlert.css';
 
 const Header = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false); // Novo estado para controlar o card
   const navigate = useNavigate();
 
   const toggleSidebar = () => {
@@ -30,13 +31,10 @@ const Header = () => {
         customUI: ({ onClose }) => (
         <div className="react-confirm-alert-wrapper">
             <div className="react-confirm-alert-container">
-                {/* Título e mensagem dentro de uma div */}
                 <div className="react-confirm-alert-message">
                     <h1>Desconectar</h1>
                     <p>Você tem certeza que deseja sair?</p>
                 </div>
-
-                {/* Botões dentro de outra div */}
                 <div className="react-confirm-alert-buttons">
                     <button
                     onClick={() => {
@@ -54,6 +52,14 @@ const Header = () => {
     });
   };
 
+  const handleSettingsClick = () => {
+    setIsSettingsOpen(true); // Abre o card ao clicar no botão de configurações
+  };
+
+  const closeSettingsCard = () => {
+    setIsSettingsOpen(false); // Fecha o card
+  };
+
   return (
     <div className={`${style.sidebar} ${isExpanded ? style.expanded : style.collapsed}`}>
         <span className={style.caixaLogo}>
@@ -67,14 +73,26 @@ const Header = () => {
             <Link to='/' title="Conversas">
                 <BiMessageRoundedDetail /> {isExpanded && <span>Conversas</span>}
             </Link>
-            
-            <Link to='/Register' title="Configuracões">
+
+            <button onClick={handleSettingsClick} title="Configurações">
                 <FaCog /> {isExpanded && <span>Configurações</span>}
-            </Link>
+            </button>
+            
             <Link onClick={handleLogout} className={style.logoutBtn} title="Desconectar">
                     <FaSignOutAlt /> {isExpanded && <span>Desconectar</span>}
             </Link>
         </ul>
+
+        {/* Card de Configurações */}
+        {isSettingsOpen && (
+          <div className={style.settingsCard}>
+            <div className={style.cardContent}>
+              <h2>Configurações</h2>
+              <p>Aqui você pode modificar as configurações.</p>
+              <button onClick={closeSettingsCard}>Fechar</button>
+            </div>
+          </div>
+        )}
     </div>
   );
 };
