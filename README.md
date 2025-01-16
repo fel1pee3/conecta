@@ -17,9 +17,10 @@ Confira uma prévia do Conecta:
 
 ---
 
-## Funcionalidades
-- ✅ Envio e recebimento de mensagens em tempo real.
+## Principais Funcionalidades
 - ✅ Sistema de autenticação seguro (JWT).
+- ✅ Pesquisa de contatos.
+- ✅ Envio e recebimento de mensagens em tempo real.
 - ✅ Criação de contas e gerenciamento de perfis de usuário.
 - ✅ Design responsivo para dispositivos móveis e desktops.
 
