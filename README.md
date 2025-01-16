@@ -92,20 +92,6 @@ CREATE TABLE messages (
 );
 ```
 
-#### Tabela `conversations`
-A tabela conversations será útil para identificar diferentes conversas entre usuários.
-```bash
-CREATE TABLE conversations (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_one_id INT NOT NULL,
-    user_two_id INT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_one_id) REFERENCES users(id),
-    FOREIGN KEY (user_two_id) REFERENCES users(id),
-    UNIQUE(user_one_id, user_two_id)
-);
-```
-
 ### Instalação
 
 1. Clone o repositório:
